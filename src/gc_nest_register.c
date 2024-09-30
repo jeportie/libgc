@@ -6,11 +6,11 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:23:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/07/08 00:47:39 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:16:02 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/libgc.h"
 
 void	gc_nest_register(void *ptr)
 {

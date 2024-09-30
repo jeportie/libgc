@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:23:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/07/08 01:45:45 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:15:09 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/libgc.h"
 #include <stdarg.h>
 
 static void	gc_delete_node(t_gc_node **prev, t_gc_node **current)

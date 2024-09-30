@@ -6,11 +6,11 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:20:13 by jeportie          #+#    #+#             */
-/*   Updated: 2024/07/08 00:49:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:15:39 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/libgc.h"
 
 void	*gc_malloc(size_t size)
 {

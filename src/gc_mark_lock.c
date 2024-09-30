@@ -6,11 +6,11 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:50:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/07/11 08:25:42 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:15:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/libgc.h"
 
 void	gc_mark(void *ptr)
 {

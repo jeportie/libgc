@@ -6,11 +6,11 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:18:49 by jeportie          #+#    #+#             */
-/*   Updated: 2024/07/08 01:35:21 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:15:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/libgc.h"
 
 void	gc_fd_register(int fd)
 {

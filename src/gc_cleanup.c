@@ -6,11 +6,11 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:09:32 by jeportie          #+#    #+#             */
-/*   Updated: 2024/07/10 14:48:25 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:15:02 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/libgc.h"
 
 void	gc_cleanup(void)
 {
