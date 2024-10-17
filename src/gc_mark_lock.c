@@ -6,17 +6,17 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:50:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/30 13:15:52 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/02 15:25:09 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libgc.h"
 
-void	gc_mark(void *ptr)
+void	gc_mark(void *ptr, t_gc *gcl)
 {
 	t_gc_node	*current;
 
-	current = g_garbage_collector.head;
+	current = gcl->head;
 	while (current)
 	{
 		if (current->ptr == ptr)
@@ -30,11 +30,11 @@ void	gc_mark(void *ptr)
 	}
 }
 
-void	gc_lock(void *ptr)
+void	gc_lock(void *ptr, t_gc *gcl)
 {
 	t_gc_node	*current;
 
-	current = g_garbage_collector.head;
+	current = gcl->head;
 	while (current)
 	{
 		if (current->ptr == ptr)
@@ -46,7 +46,7 @@ void	gc_lock(void *ptr)
 	}
 }
 
-void	gc_nest_lock(void *ptr)
+void	gc_nest_lock(void *ptr, t_gc *gcl)
 {
 	int		i;
 	void	**array;
@@ -57,17 +57,17 @@ void	gc_nest_lock(void *ptr)
 	i = 0;
 	while (array[i])
 	{
-		gc_lock(array[i]);
+		gc_lock(array[i], gcl);
 		i++;
 	}
-	gc_lock(ptr);
+	gc_lock(ptr, gcl);
 }
 
-void	gc_unlock(void *ptr)
+void	gc_unlock(void *ptr, t_gc *gcl)
 {
 	t_gc_node	*current;
 
-	current = g_garbage_collector.head;
+	current = gcl->head;
 	while (current)
 	{
 		if (current->ptr == ptr)
