@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:59:02 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 13:03:55 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:21:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_garbage_collector
 /* GARBAGE_COLLECTOR */
 void			*gc_init(void);
 void			*gc_malloc(size_t size, t_gc *gcl);
+void			*gc_realloc(void *ptr, size_t size, t_gc *gcl);
 void			gc_register(void *ptr, t_gc *gcl);
 void			gc_nest_register(void *ptr, t_gc *gcl);
 void			gc_fd_register(int fd, t_gc *gcl);
