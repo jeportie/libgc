@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:59:02 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 08:54:37 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:03:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,13 @@ void			gc_fd_register(int fd, t_gc *gcl);
 void			gc_temp_file_register(const char *filename, t_gc *gcl);
 void			gc_cleanup(t_gc *gcl);
 void			gc_collect(t_gc *gcl);
+void			gc_free(void *ptr, t_gc *gcl);
 void			gc_lock(void *ptr, t_gc *gcl);
 void			gc_nest_lock(void *ptr, t_gc *gcl);
 void			gc_unlock(void *ptr, t_gc *gcl);
 void			gc_mark(void *ptr, t_gc *gcl);
 
+void			*gc_memcpy(void *dest, const void *src, size_t n);
 char			*gc_strjoin(char const *s1, char const *s2);
 
 #endif /*LIBGC_H*/

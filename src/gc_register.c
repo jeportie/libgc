@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:25:20 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 09:01:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:02:48 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ void	gc_register(void *ptr, t_gc *gcl)
 
 static int	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
 	return (i);
 }
 
-static void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*gc_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*mem_dest;
 	unsigned char	*mem_src;
@@ -72,7 +72,7 @@ static char	*ft_strdup(const char *s)
 		errno = ENOMEM;
 		return (NULL);
 	}
-	new_str = ft_memcpy(new_str, s, s_len + 1);
+	new_str = gc_memcpy(new_str, s, s_len + 1);
 	return (new_str);
 }
 
