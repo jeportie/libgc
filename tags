@@ -11,22 +11,26 @@ NAME	Makefile	/^NAME = libgc.a$/;"	m
 OBJ	Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 SRC	Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
 fd	include/libgc.h	/^	int					fd;$/;"	m	struct:s_gc_node
+ft_memcpy	src/gc_realloc.c	/^static void    *ft_memcpy(void *dest, const void *src, size_t n)$/;"	f	file:
 ft_memcpy	src/gc_register.c	/^static void	*ft_memcpy(void *dest, const void *src, size_t n)$/;"	f	file:
+ft_memset	src/gc_init.c	/^static void	*ft_memset(void *s, int c, size_t n)$/;"	f	file:
 ft_strdup	src/gc_register.c	/^static char	*ft_strdup(const char *s)$/;"	f	file:
 ft_strlen	src/gc_register.c	/^static int	ft_strlen(const char *str)$/;"	f	file:
-g_garbage_collector	src/gc_globals.c	/^t_gc	g_garbage_collector = {NULL};$/;"	v
-gc_cleanup	src/gc_cleanup.c	/^void	gc_cleanup(t_gc gcl)$/;"	f
-gc_collect	src/gc_collect.c	/^void	gc_collect(t_gc gcl)$/;"	f
-gc_delete_node	src/gc_collect.c	/^static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc gcl)$/;"	f	file:
-gc_fd_register	src/gc_fd_register.c	/^void	gc_fd_register(int fd, t_gc gcl)$/;"	f
-gc_lock	src/gc_mark_lock.c	/^void	gc_lock(void *ptr, t_gc gcl)$/;"	f
-gc_malloc	src/gc_malloc.c	/^void	*gc_malloc(size_t size, t_gc gcl)$/;"	f
-gc_mark	src/gc_mark_lock.c	/^void	gc_mark(void *ptr, t_gc gcl)$/;"	f
-gc_nest_lock	src/gc_mark_lock.c	/^void	gc_nest_lock(void *ptr, t_gc gcl)$/;"	f
-gc_nest_register	src/gc_nest_register.c	/^void	gc_nest_register(void *ptr, t_gc gcl)$/;"	f
-gc_register	src/gc_register.c	/^void	gc_register(void *ptr, t_gc gcl)$/;"	f
-gc_temp_file_register	src/gc_register.c	/^void	gc_temp_file_register(const char *filename, t_gc gcl)$/;"	f
-gc_unlock	src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc gcl)$/;"	f
+gc_cleanup	src/gc_cleanup.c	/^void	gc_cleanup(t_gc *gcl)$/;"	f
+gc_collect	src/gc_collect.c	/^void	gc_collect(t_gc *gcl)$/;"	f
+gc_delete_node	src/gc_collect.c	/^static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc *gcl)$/;"	f	file:
+gc_fd_register	src/gc_fd_register.c	/^void	gc_fd_register(int fd, t_gc *gcl)$/;"	f
+gc_free	src/gc_free.c	/^void gc_free(void *ptr, t_gc *gcl)$/;"	f
+gc_init	src/gc_init.c	/^void	*gc_init(void)$/;"	f
+gc_lock	src/gc_mark_lock.c	/^void	gc_lock(void *ptr, t_gc *gcl)$/;"	f
+gc_malloc	src/gc_malloc.c	/^void	*gc_malloc(size_t size, t_gc *gcl)$/;"	f
+gc_mark	src/gc_mark_lock.c	/^void	gc_mark(void *ptr, t_gc *gcl)$/;"	f
+gc_nest_lock	src/gc_mark_lock.c	/^void	gc_nest_lock(void *ptr, t_gc *gcl)$/;"	f
+gc_nest_register	src/gc_nest_register.c	/^void	gc_nest_register(void *ptr, t_gc *gcl)$/;"	f
+gc_realloc	src/gc_realloc.c	/^void *gc_realloc(void *ptr, size_t size, t_gc *gcl)$/;"	f
+gc_register	src/gc_register.c	/^void	gc_register(void *ptr, t_gc *gcl)$/;"	f
+gc_temp_file_register	src/gc_register.c	/^void	gc_temp_file_register(const char *filename, t_gc *gcl)$/;"	f
+gc_unlock	src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc *gcl)$/;"	f
 head	include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
 is_array	include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
 is_locked	include/libgc.h	/^	bool				is_locked;$/;"	m	struct:s_gc_node
@@ -35,6 +39,7 @@ next	include/libgc.h	/^	struct s_gc_node	*next;$/;"	m	struct:s_gc_node	typeref:s
 ptr	include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
 s_garbage_collector	include/libgc.h	/^typedef struct s_garbage_collector$/;"	s
 s_gc_node	include/libgc.h	/^typedef struct s_gc_node$/;"	s
+size	include/libgc.h	/^	size_t				size;$/;"	m	struct:s_gc_node
 t_gc	include/libgc.h	/^}				t_gc;$/;"	t	typeref:struct:s_garbage_collector
 t_gc_node	include/libgc.h	/^}				t_gc_node;$/;"	t	typeref:struct:s_gc_node
 temp_file	include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node

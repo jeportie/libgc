@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:23:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 15:25:55 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 09:00:49 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	gc_nest_register(void *ptr, t_gc *gcl)
 		exit(EXIT_FAILURE);
 	}
 	new_node->ptr = ptr;
+	new_node->size = 0;
 	new_node->is_marked = false;
 	new_node->is_locked = false;
 	new_node->is_array = true;

@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:59:02 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 15:21:22 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 08:54:37 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef struct s_gc_node
 {
 	void				*ptr;
+	size_t				size;
 	bool				is_marked;
 	bool				is_locked;
 	bool				is_array;

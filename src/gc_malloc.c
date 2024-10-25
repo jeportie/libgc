@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:20:13 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 15:23:38 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 08:56:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	*gc_malloc(size_t size, t_gc *gcl)
 		exit(EXIT_FAILURE);
 	}
 	new_node->ptr = ptr;
+	new_node->size = size;
 	new_node->is_marked = false;
 	new_node->is_locked = false;
 	new_node->is_array = false;

@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:18:49 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 15:23:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 09:00:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	gc_fd_register(int fd, t_gc *gcl)
 		exit(EXIT_FAILURE);
 	}
 	new_node->ptr = NULL;
+	new_node->size = 0;
 	new_node->is_marked = false;
 	new_node->is_locked = true;
 	new_node->is_array = false;
