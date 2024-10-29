@@ -1,3 +1,5 @@
+![Screenshot from 2024-10-29 09-36-13](https://github.com/user-attachments/assets/ad2e3b21-495e-488e-ac3d-feba597dcd02)
+
 # Garbage Collection Library
 
 ## Overview
