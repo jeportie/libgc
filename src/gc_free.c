@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:59:04 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 13:00:03 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:04:41 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,44 @@ void	gc_free(void *ptr, t_gc *gcl)
 	write(2, "Error: Pointer not managed by GC.\n", 34);
 	gc_cleanup(gcl);
 	exit(EXIT_FAILURE);
+}
+
+int	gc_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+void	*gc_memcpy(void *dest, const void *src, size_t n)
+{
+	unsigned char	*mem_dest;
+	unsigned char	*mem_src;
+
+	if (!dest && !src)
+		return (NULL);
+	mem_dest = (unsigned char *)dest;
+	mem_src = (unsigned char *)src;
+	while (n-- && mem_dest && mem_src)
+		*mem_dest++ = *mem_src++;
+	return (dest);
+}
+
+char	*gc_strdup(const char *s)
+{
+	char	*new_str;
+	size_t	s_len;
+
+	s_len = gc_strlen(s);
+	new_str = (char *)malloc(sizeof(char) * (s_len + 1));
+	if (!new_str)
+	{
+		errno = ENOMEM;
+		return (NULL);
+	}
+	new_str = gc_memcpy(new_str, s, s_len + 1);
+	return (new_str);
 }

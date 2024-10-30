@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:25:20 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 13:02:48 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:07:11 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,44 +36,16 @@ void	gc_register(void *ptr, t_gc *gcl)
 	gcl->head = new_node;
 }
 
-static int	ft_strlen(const char *str)
+static t_gc_node	*init(t_gc_node *new_node, const char *filename)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-void	*gc_memcpy(void *dest, const void *src, size_t n)
-{
-	unsigned char	*mem_dest;
-	unsigned char	*mem_src;
-
-	if (!dest && !src)
-		return (NULL);
-	mem_dest = (unsigned char *)dest;
-	mem_src = (unsigned char *)src;
-	while (n-- && mem_dest && mem_src)
-		*mem_dest++ = *mem_src++;
-	return (dest);
-}
-
-static char	*ft_strdup(const char *s)
-{
-	char	*new_str;
-	size_t	s_len;
-
-	s_len = ft_strlen(s);
-	new_str = (char *)malloc(sizeof(char) * (s_len + 1));
-	if (!new_str)
-	{
-		errno = ENOMEM;
-		return (NULL);
-	}
-	new_str = gc_memcpy(new_str, s, s_len + 1);
-	return (new_str);
+	new_node->ptr = NULL;
+	new_node->size = 0;
+	new_node->is_marked = false;
+	new_node->is_locked = true;
+	new_node->is_array = false;
+	new_node->fd = -1;
+	new_node->temp_file = gc_strdup(filename);
+	return (new_node);
 }
 
 void	gc_temp_file_register(const char *filename, t_gc *gcl)
@@ -89,13 +61,7 @@ void	gc_temp_file_register(const char *filename, t_gc *gcl)
 		write(2, "Error: GC node malloc failed.\n", 31);
 		exit(EXIT_FAILURE);
 	}
-	new_node->ptr = NULL;
-	new_node->size = 0;
-	new_node->is_marked = false;
-	new_node->is_locked = true;
-	new_node->is_array = false;
-	new_node->fd = -1;
-	new_node->temp_file = ft_strdup(filename);
+	init(new_node, filename);
 	if (!new_node->temp_file)
 	{
 		free(new_node);
