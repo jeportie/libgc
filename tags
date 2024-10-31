@@ -31,6 +31,7 @@ gc_strlen	src/gc_free.c	/^int	gc_strlen(const char *str)$/;"	f
 gc_temp_file_register	src/gc_register.c	/^void	gc_temp_file_register(const char *filename, t_gc *gcl)$/;"	f
 gc_unlock	src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc *gcl)$/;"	f
 head	include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
+helper	src/gc_realloc.c	/^static void	*helper(t_gc_node *current, void *ptr, size_t size, t_gc *gcl)$/;"	f	file:
 init	src/gc_nest_register.c	/^static t_gc_node	*init(t_gc_node *new_node, void *ptr, t_gc *gcl)$/;"	f	file:
 init	src/gc_register.c	/^static t_gc_node	*init(t_gc_node *new_node, const char *filename)$/;"	f	file:
 is_array	include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
