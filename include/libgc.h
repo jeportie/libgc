@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:59:02 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 18:54:05 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:55:41 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			gc_unlock(void *ptr, t_gc *gcl);
 void			gc_mark(void *ptr, t_gc *gcl);
 
 void			*gc_memcpy(void *dest, const void *src, size_t n);
-char			*gc_strjoin(t_gc *gcl, char const *s1, char const *s2,
+char			*gc_strjoin(char *s1, char *s2, t_gc *gcl,
 					int flag);
 int				gc_strlen(const char *str);
 char			*gc_strdup(const char *s);
