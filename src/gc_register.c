@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:25:20 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/30 16:07:11 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:22:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	gc_register(void *ptr, t_gc *gcl)
 	gcl->head = new_node;
 }
 
-static t_gc_node	*init(t_gc_node *new_node, const char *filename)
+static t_gc_node	*init(t_gc_node *new_node, const char *filename, t_gc *gcl)
 {
 	new_node->ptr = NULL;
 	new_node->size = 0;
@@ -44,7 +44,7 @@ static t_gc_node	*init(t_gc_node *new_node, const char *filename)
 	new_node->is_locked = true;
 	new_node->is_array = false;
 	new_node->fd = -1;
-	new_node->temp_file = gc_strdup(filename);
+	new_node->temp_file = gc_strdup(filename, gcl);
 	return (new_node);
 }
 
@@ -61,7 +61,7 @@ void	gc_temp_file_register(const char *filename, t_gc *gcl)
 		write(2, "Error: GC node malloc failed.\n", 31);
 		exit(EXIT_FAILURE);
 	}
-	init(new_node, filename);
+	init(new_node, filename, gcl);
 	if (!new_node->temp_file)
 	{
 		free(new_node);

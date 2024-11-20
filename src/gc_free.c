@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:59:04 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/30 16:04:41 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:14:27 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,15 @@ void	*gc_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-char	*gc_strdup(const char *s)
+char	*gc_strdup(const char *s, t_gc *gcl)
 {
 	char	*new_str;
 	size_t	s_len;
 
 	s_len = gc_strlen(s);
-	new_str = (char *)malloc(sizeof(char) * (s_len + 1));
+	new_str = (char *)gc_malloc(sizeof(char) * (s_len + 1), gcl);
 	if (!new_str)
-	{
-		errno = ENOMEM;
 		return (NULL);
-	}
 	new_str = gc_memcpy(new_str, s, s_len + 1);
 	return (new_str);
 }
