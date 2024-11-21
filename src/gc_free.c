@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:59:04 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/20 12:14:27 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:22:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	gc_free(void *ptr, t_gc *gcl)
 		prev = current;
 		current = current->next;
 	}
-	write(2, "Error: Pointer not managed by GC.\n", 34);
-	gc_cleanup(gcl);
 	exit(EXIT_FAILURE);
 }
 
