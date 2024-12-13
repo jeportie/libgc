@@ -11,7 +11,7 @@ DEFAULT_ARENA_SIZE	include/libgc.h	26;"	d
 LIBGC_H	include/libgc.h	14;"	d
 NAME	Makefile	/^NAME = libgc.a$/;"	m
 OBJ	Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
-SRC	Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
+SRC	Makefile	/^SRC = \\$/;"	m
 a_head	include/libgc.h	/^	t_arena_node	*a_head;$/;"	m	struct:s_garbage_collector
 arena_base	include/libgc.h	/^	void				*arena_base;$/;"	m	struct:s_arena_node
 arena_capacity	include/libgc.h	/^	size_t				arena_capacity;$/;"	m	struct:s_arena_node
@@ -40,6 +40,7 @@ gc_strdup	src/gc_free.c	/^char	*gc_strdup(const char *s, t_gc *gcl)$/;"	f
 gc_strlen	src/gc_free.c	/^int	gc_strlen(const char *str)$/;"	f
 gc_temp_file_register	src/gc_register.c	/^void	gc_temp_file_register(const char *filename, t_gc *gcl)$/;"	f
 gc_unlock	src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc *gcl)$/;"	f
+generate_src_list	update_makefile.sh	/^generate_src_list() {$/;"	f
 head	include/libgc.h	/^	t_gc_node		*head;$/;"	m	struct:s_garbage_collector
 helper	src/gc_realloc.c	/^static void	*helper(t_gc_node *current, void *ptr, size_t size, t_gc *gcl)$/;"	f	file:
 id	include/libgc.h	/^	int					id;$/;"	m	struct:s_arena_node

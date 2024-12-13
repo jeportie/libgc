@@ -16,18 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
-SRC = \
-  src/gc_fd_register.c \
-  src/gc_malloc.c \
-  src/gc_mark_lock.c \
-  src/gc_nest_register.c \
-  src/gc_realloc.c \
-  src/gc_register.c \
-  src/gc_collect.c \
-  src/gc_init.c \
-  src/gc_free.c \
-  src/gc_cleanup.c \
-  src/gc_arena_alloc.c 
+SRC =
 ### END AUTO GENERATED FILES ###
 
 OBJ = $(SRC:.c=.o)
