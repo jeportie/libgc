@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:23:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 15:22:41 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:01:09 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc *gcl)
 	else
 		tmp->head = next_node;
 	if ((*current)->ptr)
+	{
 		free((*current)->ptr);
+		(*current)->ptr = NULL;
+	}
 	free(*current);
 	*current = next_node;
 	*gcl = *tmp;

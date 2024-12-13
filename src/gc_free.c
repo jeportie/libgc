@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:59:04 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/20 15:22:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:01:39 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	gc_free(void *ptr, t_gc *gcl)
 			else
 				gcl->head = current->next;
 			free(current->ptr);
+			current->ptr = NULL;
 			free(current);
 			return ;
 		}

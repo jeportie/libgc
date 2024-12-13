@@ -4,20 +4,30 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALIGNMENT	include/libgc.h	27;"	d
 CC	Makefile	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+DEFAULT_ARENA_SIZE	include/libgc.h	26;"	d
 LIBGC_H	include/libgc.h	14;"	d
 NAME	Makefile	/^NAME = libgc.a$/;"	m
 OBJ	Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 SRC	Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
+a_head	include/libgc.h	/^	t_arena_node	*a_head;$/;"	m	struct:s_garbage_collector
+arena_base	include/libgc.h	/^	void				*arena_base;$/;"	m	struct:s_arena_node
+arena_capacity	include/libgc.h	/^	size_t				arena_capacity;$/;"	m	struct:s_arena_node
+arena_offset	include/libgc.h	/^	size_t				arena_offset;$/;"	m	struct:s_arena_node
 fd	include/libgc.h	/^	int					fd;$/;"	m	struct:s_gc_node
 ft_memset	src/gc_init.c	/^static void	*ft_memset(void *s, int c, size_t n)$/;"	f	file:
+gc_align_up	src/gc_arena_alloc.c	/^static inline size_t	gc_align_up(size_t size, size_t alignment)$/;"	f	file:
+gc_arena_alloc	src/gc_arena_alloc.c	/^void	*gc_arena_alloc(size_t size, int id, t_gc *gcl)$/;"	f
 gc_cleanup	src/gc_cleanup.c	/^void	gc_cleanup(t_gc *gcl)$/;"	f
 gc_collect	src/gc_collect.c	/^void	gc_collect(t_gc *gcl)$/;"	f
+gc_collect_arena	src/gc_arena_alloc.c	/^void	gc_collect_arena(int id, t_gc *gcl)$/;"	f
 gc_delete_node	src/gc_collect.c	/^static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc *gcl)$/;"	f	file:
 gc_fd_register	src/gc_fd_register.c	/^void	gc_fd_register(int fd, t_gc *gcl)$/;"	f
 gc_free	src/gc_free.c	/^void	gc_free(void *ptr, t_gc *gcl)$/;"	f
 gc_init	src/gc_init.c	/^void	*gc_init(void)$/;"	f
+gc_init_arena	src/gc_arena_alloc.c	/^int	gc_init_arena(t_gc *gcl)$/;"	f
 gc_lock	src/gc_mark_lock.c	/^void	gc_lock(void *ptr, t_gc *gcl)$/;"	f
 gc_malloc	src/gc_malloc.c	/^void	*gc_malloc(size_t size, t_gc *gcl)$/;"	f
 gc_mark	src/gc_mark_lock.c	/^void	gc_mark(void *ptr, t_gc *gcl)$/;"	f
@@ -30,18 +40,23 @@ gc_strdup	src/gc_free.c	/^char	*gc_strdup(const char *s, t_gc *gcl)$/;"	f
 gc_strlen	src/gc_free.c	/^int	gc_strlen(const char *str)$/;"	f
 gc_temp_file_register	src/gc_register.c	/^void	gc_temp_file_register(const char *filename, t_gc *gcl)$/;"	f
 gc_unlock	src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc *gcl)$/;"	f
-head	include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
+head	include/libgc.h	/^	t_gc_node		*head;$/;"	m	struct:s_garbage_collector
 helper	src/gc_realloc.c	/^static void	*helper(t_gc_node *current, void *ptr, size_t size, t_gc *gcl)$/;"	f	file:
+id	include/libgc.h	/^	int					id;$/;"	m	struct:s_arena_node
 init	src/gc_nest_register.c	/^static t_gc_node	*init(t_gc_node *new_node, void *ptr, t_gc *gcl)$/;"	f	file:
 init	src/gc_register.c	/^static t_gc_node	*init(t_gc_node *new_node, const char *filename, t_gc *gcl)$/;"	f	file:
 is_array	include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
 is_locked	include/libgc.h	/^	bool				is_locked;$/;"	m	struct:s_gc_node
 is_marked	include/libgc.h	/^	bool				is_marked;$/;"	m	struct:s_gc_node
+next	include/libgc.h	/^	struct s_arena_node	*next;$/;"	m	struct:s_arena_node	typeref:struct:s_arena_node::s_arena_node
 next	include/libgc.h	/^	struct s_gc_node	*next;$/;"	m	struct:s_gc_node	typeref:struct:s_gc_node::s_gc_node
+next_arena_id	include/libgc.h	/^	int				next_arena_id;$/;"	m	struct:s_garbage_collector
 ptr	include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
+s_arena_node	include/libgc.h	/^typedef struct s_arena_node$/;"	s
 s_garbage_collector	include/libgc.h	/^typedef struct s_garbage_collector$/;"	s
 s_gc_node	include/libgc.h	/^typedef struct s_gc_node$/;"	s
 size	include/libgc.h	/^	size_t				size;$/;"	m	struct:s_gc_node
-t_gc	include/libgc.h	/^}				t_gc;$/;"	t	typeref:struct:s_garbage_collector
-t_gc_node	include/libgc.h	/^}				t_gc_node;$/;"	t	typeref:struct:s_gc_node
+t_arena_node	include/libgc.h	/^}						t_arena_node;$/;"	t	typeref:struct:s_arena_node
+t_gc	include/libgc.h	/^}					t_gc;$/;"	t	typeref:struct:s_garbage_collector
+t_gc_node	include/libgc.h	/^}						t_gc_node;$/;"	t	typeref:struct:s_gc_node
 temp_file	include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node

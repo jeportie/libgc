@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:59:02 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 17:11:04 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:47:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <stdbool.h>
 # include <stdio.h>
 
+# define DEFAULT_ARENA_SIZE 1048576
+# define ALIGNMENT 16
+
 typedef struct s_gc_node
 {
 	void				*ptr;
@@ -33,14 +36,23 @@ typedef struct s_gc_node
 	int					fd;
 	char				*temp_file;
 	struct s_gc_node	*next;
-}				t_gc_node;
+}						t_gc_node;
+
+typedef struct s_arena_node
+{
+	void				*arena_base;
+	size_t				arena_capacity;
+	size_t				arena_offset;
+	int					id;
+	struct s_arena_node	*next;
+}						t_arena_node;
 
 typedef struct s_garbage_collector
 {
-	t_gc_node	*head;
-}				t_gc;
-
-//extern t_gc			g_garbage_collector;
+	t_gc_node		*head;
+	t_arena_node	*a_head;
+	int				next_arena_id;
+}					t_gc;
 
 /* GARBAGE_COLLECTOR */
 void			*gc_init(void);

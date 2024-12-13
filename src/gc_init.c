@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 14:15:11 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 15:30:09 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:47:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	*gc_init(void)
 		exit(EXIT_FAILURE);
 	}
 	ft_memset(gcl, 0, sizeof(t_gc));
+	gcl->next_arena_id = 1;
 	return (gcl);
 }

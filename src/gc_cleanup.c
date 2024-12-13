@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:09:32 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 15:21:35 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:26:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	gc_cleanup(t_gc *gcl)
 {
-	t_gc_node	*current;
-	t_gc_node	*next;
+	t_gc_node		*current;
+	t_gc_node		*next;
+	t_arena_node	*a_current;
+	t_arena_node	*a_next;
 
 	current = gcl->head;
 	while (current)
@@ -26,9 +28,24 @@ void	gc_cleanup(t_gc *gcl)
 		if (current->fd > -1)
 			close(current->fd);
 		else if (current->ptr)
+		{
 			free(current->ptr);
+			current->ptr = NULL;
+		}
 		free(current);
 		current = next;
 	}
 	gcl->head = NULL;
+	a_current = gcl->a_head;
+	while (a_current)
+	{
+		a_next = a_current->next;
+		free(a_current->arena_base);
+		a_current->arena_base = NULL;
+		free(a_current);
+		a_current = a_next;
+	}
+	gcl->a_head = NULL;
+	free(gcl);
+	gcl = NULL;
 }
