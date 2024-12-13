@@ -15,6 +15,7 @@ SRC	Makefile	/^SRC = \\$/;"	m
 a_head	include/libgc.h	/^	t_arena_node	*a_head;$/;"	m	struct:s_garbage_collector
 arena_base	include/libgc.h	/^	void				*arena_base;$/;"	m	struct:s_arena_node
 arena_capacity	include/libgc.h	/^	size_t				arena_capacity;$/;"	m	struct:s_arena_node
+arena_mode	include/libgc.h	/^	bool			arena_mode;$/;"	m	struct:s_garbage_collector
 arena_offset	include/libgc.h	/^	size_t				arena_offset;$/;"	m	struct:s_arena_node
 fd	include/libgc.h	/^	int					fd;$/;"	m	struct:s_gc_node
 ft_memset	src/gc_init.c	/^static void	*ft_memset(void *s, int c, size_t n)$/;"	f	file:

@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:59:02 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/13 17:10:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:42:53 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_garbage_collector
 {
 	t_gc_node		*head;
 	t_arena_node	*a_head;
+	bool			arena_mode;
 	int				next_arena_id;
 }					t_gc;
 
