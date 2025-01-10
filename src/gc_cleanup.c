@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:09:32 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 15:21:35 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:42:11 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ void	gc_cleanup(t_gc *gcl)
 		current = next;
 	}
 	gcl->head = NULL;
+	free(gcl);
 }
