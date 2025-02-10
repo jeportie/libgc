@@ -6,18 +6,18 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:09:32 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/10 10:42:11 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:42:03 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libgc.h"
 
-void	gc_cleanup(t_gc *gcl)
+void	gc_cleanup(void)
 {
 	t_gc_node	*current;
 	t_gc_node	*next;
 
-	current = gcl->head;
+	current = g_gcl.head;
 	while (current)
 	{
 		next = current->next;
@@ -30,6 +30,5 @@ void	gc_cleanup(t_gc *gcl)
 		free(current);
 		current = next;
 	}
-	gcl->head = NULL;
-	free(gcl);
+	g_gcl.head = NULL;
 }

@@ -6,13 +6,13 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:20:13 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 08:56:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:45:58 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libgc.h"
 
-void	*gc_malloc(size_t size, t_gc *gcl)
+void	*gc_malloc(size_t size)
 {
 	t_gc_node	*new_node;
 	void		*ptr;
@@ -24,7 +24,7 @@ void	*gc_malloc(size_t size, t_gc *gcl)
 	if (!new_node)
 	{
 		free(ptr);
-		gc_cleanup(gcl);
+		gc_cleanup();
 		write(2, "Error: GC node malloc failed.\n", 31);
 		exit(EXIT_FAILURE);
 	}
@@ -35,7 +35,7 @@ void	*gc_malloc(size_t size, t_gc *gcl)
 	new_node->is_array = false;
 	new_node->fd = -1;
 	new_node->temp_file = NULL;
-	new_node->next = gcl->head;
-	gcl->head = new_node;
+	new_node->next = g_gcl.head;
+	g_gcl.head = new_node;
 	return (ptr);
 }

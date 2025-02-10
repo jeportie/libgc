@@ -6,18 +6,18 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:59:04 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/20 15:22:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:49:25 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libgc.h"
 
-void	gc_free(void *ptr, t_gc *gcl)
+void	gc_free(void *ptr)
 {
 	t_gc_node	*current;
 	t_gc_node	*prev;
 
-	current = gcl->head;
+	current = g_gcl.head;
 	prev = NULL;
 	while (current)
 	{
@@ -26,7 +26,7 @@ void	gc_free(void *ptr, t_gc *gcl)
 			if (prev)
 				prev->next = current->next;
 			else
-				gcl->head = current->next;
+				g_gcl.head = current->next;
 			free(current->ptr);
 			free(current);
 			return ;
@@ -34,7 +34,8 @@ void	gc_free(void *ptr, t_gc *gcl)
 		prev = current;
 		current = current->next;
 	}
-	exit(EXIT_FAILURE);
+	write(2, "Error: Pointer not managed by GC.\n", 34);
+	return ;
 }
 
 int	gc_strlen(const char *str)
@@ -61,15 +62,15 @@ void	*gc_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-char	*gc_strdup(const char *s, t_gc *gcl)
+char	*gc_strdup(const char *s)
 {
 	char	*new_str;
 	size_t	s_len;
 
 	s_len = gc_strlen(s);
-	new_str = (char *)gc_malloc(sizeof(char) * (s_len + 1), gcl);
+	new_str = (char *)gc_malloc(sizeof(char) * (s_len + 1));
 	if (!new_str)
 		return (NULL);
-	new_str = gc_memcpy(new_str, s, s_len + 1);
+	gc_memcpy(new_str, s, s_len + 1);
 	return (new_str);
 }
