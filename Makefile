@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 21:02:39 by jeportie          #+#    #+#              #
-#    Updated: 2024/10/25 08:59:51 by jeportie         ###   ########.fr        #
+#    Updated: 2025/02/13 21:45:26 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = src/gc_cleanup.c \
 	  src/gc_mark_lock.c \
 	  src/gc_realloc.c \
 	  src/gc_free.c \
+	  src/gc_global.c \
 	  src/gc_init.c
 
 OBJ = $(SRC:.c=.o)
