@@ -6,10 +6,10 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:35:19 by jeportie          #+#    #+#             */
-/*   Updated: 2025/02/10 15:36:58 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/02/14 10:29:32 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libgc.h"
 
-t_gc	g_gc = {0};
+t_gc	g_gcl = {0};

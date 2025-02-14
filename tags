@@ -12,7 +12,7 @@ OBJ	Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 SRC	Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
 fd	include/libgc.h	/^	int					fd;$/;"	m	struct:s_gc_node
 ft_memset	src/gc_init.c	/^static void	*ft_memset(void *s, int c, size_t n)$/;"	f	file:
-g_gc	src/gc_global.c	/^t_gc	g_gc = {0};$/;"	v
+g_gcl	src/gc_global.c	/^t_gc	g_gcl = {0};$/;"	v
 gc_cleanup	src/gc_cleanup.c	/^void	gc_cleanup(void)$/;"	f
 gc_collect	src/gc_collect.c	/^void	gc_collect(void)$/;"	f
 gc_delete_node	src/gc_collect.c	/^static void	gc_delete_node(t_gc_node **prev, t_gc_node **current)$/;"	f	file:
